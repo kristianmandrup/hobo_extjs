@@ -1,0 +1,61 @@
+INFO
+============
+name: extjs-hobo
+version: 0.1
+author: Kristian Mandrup, kmandrup@gmail.com
+
+INSTALLATION
+============
+
+In application.dryml, include the taglib(s) like this:
+----------
+<include src="rapid" plugin="hobo"/>
+
+<include src="taglibs/auto/rapid/cards"/>
+<include src="taglibs/auto/rapid/pages"/>
+<include src="taglibs/auto/rapid/forms"/>
+
+<set-theme name="clean"/>
+
+<include src="extjs_core" plugin="ext_hobo"/>
+
+<def tag="app-name">Ext Js Test</def>
+----------
+
+To use the taglib included, use the tags in any .dryml file, fx something like this:
+---------
+<jscript>
+  <ext-win title="hello" width="200" show>
+    <ext-panel title="Panel1"/>
+  </ext-win>
+</jscript>
+----------
+
+A simple example: Put this in your front/index.dryml
+---
+<page title="Home">
+  <body: class="front-page"/>
+  <content:>
+  
+    <header class="content-header">
+      <h1>Welcome to <app-name/></h1>
+      <section class="welcome-message">
+        <h3>Congratulations! Your Hobo Rails App is using ExtJS</h3>
+        <jscript>
+          <ext-win title="hello" width="200" show>
+            <ext-panel title="Panel1"/>
+          </ext-win>
+        </jscript>
+      </section>
+    </header>
+
+    <section class="content-body">
+    </section>
+  </content:>
+  
+</page>
+----
+
+Then restart the application (script/server), and reload the browser on the index page!
+
+ENJOY!

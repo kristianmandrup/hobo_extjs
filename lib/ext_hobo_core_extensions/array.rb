@@ -1,4 +1,4 @@
-module ExtScaffoldCoreExtensions
+module ExtHoboCoreExtensions
   module Array
 
     # return Ext compatible JSON form of an Array, i.e.:

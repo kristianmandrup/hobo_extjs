@@ -1,0 +1,46 @@
+<def tag="use-ext" attrs="lang">
+  <%= stylesheet_link_tag   "ext/resources/css/ext-all.css" %>
+  <% lang_code = lang ? lang : "en" %> 
+  <%= javascript_include_tag "ext/adapter/ext/ext-base.js",
+                             Rails.env.development? ? "ext/ext-all-debug.js" : "ext/ext-all.js",                             
+                            "ext/build/locale/ext-lang-#{lang_code}.js" %>
+  <% javascript_tag do %>
+    Ext.BLANK_IMAGE_URL = '<%= image_path 'ext/resources/images/default/s.gif' %>';
+  <% end %>
+</def>
+
+
+<def tag="jscript">
+  <script type="text/javascript" charset="utf-8"><do param="default"/></script>  
+</def>
+
+<def tag="ext-win" attrs="title, width, height, frame, html, show, layout"><%= "new Ext.Window({\n" %><% 
+  decl_attr = attrs_for(:ext_win)
+  tag_attrs = all_attributes & decl_attr
+  my_atrrs = ext_attrs(tag_attrs)  
+  %><%= ext_attributes(my_atrrs) %><%= "," if my_atrrs.size > 0 && params.default %>
+  <do param="autoload"/>
+	<%= "items : [" if parameters.default %><do param="default"/><%= "]" if parameters.default %>
+  <%= "})" %><%= ".show();" if show %>
+</def>
+
+<def tag="autoload" attrs="title, width, height, frame, html, show, layout">
+  <%= "autoLoad : {" %> 
+  <%
+  decl_attr = attrs_for(:autoload)
+  tag_attrs = all_attributes & decl_attr
+  my_atrrs = ext_attrs(tag_attrs)  
+  %><%= ext_attributes(my_atrrs) %>
+  <%= "})" %>  
+</def>
+
+
+<def tag="ext-panel" attrs="title, width, height, frame, html">
+  <%= "{ xtype    : 'panel'" %><%
+    decl_attr = attrs_for(:ext_panel)
+    tag_attrs = all_attributes & decl_attr
+    my_atrrs = ext_attrs(tag_attrs)  
+    %><%= ", #{ext_attributes(my_atrrs)}" if my_atrrs.size >0  %><%= "," if my_atrrs.size > 0 && params.default %>
+  	<%= "items :" if parameters.default %><do param="default"/>  
+  }
+</def>

@@ -1,12 +1,8 @@
 puts <<_MSG
 
-You now need to download the Ext Javascript framework from
+Run the extjs and extjs3 tasks located in the /tasks folder
+This will download and install extjs 3.0
 
-http://extjs.com/download
-
-and unzip it into "#{RAILS_ROOT}/public/ext" if you have not done so yet.
-The latest Ext version Ext_scaffold was tested against is 2.2, available via
-
-http://extjs.com/deploy/ext-2.2.zip
-
+Optionally install the famfam_rails plugin (also on github!) and run its rake tasks to download and install the famfam icon set for use with ExtJS.
+ 
 _MSG

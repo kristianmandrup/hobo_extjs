@@ -1,4 +1,4 @@
-module ExtScaffoldCoreExtensions
+module ExtHoboCoreExtensions
   module ActiveRecord
     module Base
 
